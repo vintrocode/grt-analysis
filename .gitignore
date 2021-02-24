@@ -1,0 +1,5 @@
+.env
+
+volumes/*
+
+grt-analysis/notebooks/api_key.json

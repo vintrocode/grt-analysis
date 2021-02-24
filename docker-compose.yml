@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  jupyter-lab:
+    user: root
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    environment:
+      JUPYTER_ENABLE_LAB: 'yes'
+      NB_UID: ${NB_UID}
+      NB_GID: ${NB_GID}
+      METAMASK_PUBLIC_ADDRESS: ${METAMASK_PUBLIC_ADDRESS}
+      METAMASK_SECRET_KEY: ${METAMASK_SECRET_KEY}
+      PROVIDER: ${PROVIDER}
+      WEB3_INFURA_PROJECT_ID: ${WEB3_INFURA_PROJECT_ID}
+      CHOWN_HOME: 'yes'
+      CHOWN_HOME_SUDO: '-R'
+      GRANT_SUDO: 'yes'
+    image: grt-analysis:latest
+    volumes:
+      - ./volumes/home:/home/jovyan
+      - ./grt-analysis:/home/jovyan/project:shared
+    ports:
+      - 127.0.0.1:8789:8888
