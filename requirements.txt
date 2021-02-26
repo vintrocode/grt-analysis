@@ -1,3 +1,4 @@
 etherscan-python
 web3
 pandas
+datatable
